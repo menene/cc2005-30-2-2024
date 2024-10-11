@@ -1,6 +1,11 @@
+import os
+import pandas as pd
 
+path = os.getcwd()
+file = path + "/estudiantes.csv"
 
-estudiantes = []
+#estudiantes = []
+estudiantes = pd.read_csv(file)
 
 opcion = ""
 
@@ -9,7 +14,7 @@ while opcion != "6":
     print("=== NOTAS ++ ===")
     print("1. Agregar estudiante")
     print("2. Agregar notas")
-    print("3. Mostrar promedio")
+    print("3. Reporte")
     print("4. Promedio general")
     print("5. Mostrar estudiante")
     print("6. Salir")
@@ -24,7 +29,9 @@ while opcion != "6":
         est = {
             "nombre": nombre,
             "carnet": carnet,
-            "notas": []
+            "tarea1": 0,
+            "tarea2": 0,
+            "tarea3": 0
         }
         
         estudiantes.append(est)
@@ -33,14 +40,19 @@ while opcion != "6":
         carnet = input("Ingrese el número de carnet del estudiante: ")
         
         for estudiante in estudiantes:
-            
             if estudiante["carnet"] == carnet:
-                nota = int(input("Ingrese la nota del estudiante: "))
                 
-                estudiante["notas"].append(nota)
+                tarea = input("Ingrese la tarea para agregar la nota: ")
+                nota = int(input("Ingrese la nota de la tarea: "))
+                
+                estudiante[tarea] = nota
+        
         
     elif opcion == "3":
-        print("promedio")
+        #df = pd.DataFrame(estudiantes)
+        
+        print(estudiantes)
+        print(estudiantes.describe())
         
     elif opcion == "4":
         print("general")
