@@ -3,6 +3,7 @@ import pandas as pd
 
 path = os.getcwd()
 print(path)
+"""
 
 file = path + "/canciones.csv"
 
@@ -20,4 +21,4 @@ datos = pd.read_csv(file)
 
 print(datos.duracion.mean())
 print(datos.duracion.sum())
-
+"""
